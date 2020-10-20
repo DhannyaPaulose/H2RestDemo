@@ -41,8 +41,10 @@ public class CardRestController {
 		return cardService.checkCardNo(cardNo, cardPin);
 	}
 	
-	@GetMapping("/is-card")
-	public int isCardExist(@RequestParam(value = "cardNo") long cardNo, @RequestParam(value = "cardPin") int cardPin) throws Exception {
+	@GetMapping("/is-card/{cardNo}/{cardPin}")
+	public int isCardExist(@PathVariable(value = "cardNo") long cardNo, @PathVariable(value = "cardPin") int cardPin) throws Exception {
+		
 		return cardService.authCard(cardNo, cardPin);
 	}
+
 }
