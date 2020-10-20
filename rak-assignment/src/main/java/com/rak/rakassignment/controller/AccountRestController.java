@@ -3,7 +3,9 @@ package com.rak.rakassignment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +42,10 @@ public class AccountRestController {
 		return accountService.checkAccountNo(accountNo);
 	}
 	
-	@GetMapping("/is-account")
-	public boolean isAccountExist(@RequestParam(value = "accountNo") String accountNo) throws Exception {
+	
+	@GetMapping("/is-account/{accountNo}")
+	@CrossOrigin(origins = "https://localhost:3000")
+	public boolean isAccountExist(@PathVariable(value = "accountNo") String accountNo) throws Exception {
 		return accountRepository.existsById(accountNo);
 	}
 }
