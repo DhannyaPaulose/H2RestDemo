@@ -17,6 +17,7 @@ import com.rak.rakassignment.repository.AccountRepository;
 import com.rak.rakassignment.service.AccountService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class AccountRestController {
 
@@ -44,7 +45,6 @@ public class AccountRestController {
 	
 	
 	@GetMapping("/is-account/{accountNo}")
-	@CrossOrigin(origins = "https://localhost:3000")
 	public boolean isAccountExist(@PathVariable(value = "accountNo") String accountNo) throws Exception {
 		return accountRepository.existsById(accountNo);
 	}

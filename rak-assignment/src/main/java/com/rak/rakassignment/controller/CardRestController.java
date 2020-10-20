@@ -3,6 +3,7 @@ package com.rak.rakassignment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.rak.rakassignment.repository.CardRepository;
 import com.rak.rakassignment.service.CardService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class CardRestController {
 	
@@ -42,9 +44,9 @@ public class CardRestController {
 	}
 	
 	@GetMapping("/is-card/{cardNo}/{cardPin}")
-	public int isCardExist(@PathVariable(value = "cardNo") long cardNo, @PathVariable(value = "cardPin") int cardPin) throws Exception {
-		
-		return cardService.authCard(cardNo, cardPin);
+	public boolean isCardExist(@PathVariable(value = "cardNo") long cardNo, @PathVariable(value = "cardPin") int cardPin) throws Exception {
+		boolean isCard = cardService.authCard(cardNo, cardPin) == 1 ? true : false;
+		return isCard;
 	}
 
 }
