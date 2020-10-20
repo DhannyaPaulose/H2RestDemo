@@ -36,7 +36,7 @@ class RakAssignmentApplicationTests {
 	public void testAccount() {
 		
 		Account account = new Account();
-		account.setAccountNo("1234abcd5678uvwx");
+		account.setAccountNo("1234567890");
 		
 		//save account
 		accountRepository.save(account);
@@ -52,7 +52,7 @@ class RakAssignmentApplicationTests {
 			
 			Card card = new Card();
 			card.setCardNo(1234567891234567L);
-			card.setCardPin(1234);
+			card.setCardPin(1111);
 			
 			cardRepository.save(card);
 			
@@ -73,7 +73,7 @@ class RakAssignmentApplicationTests {
 			Registration registration = new Registration();
 			Registration saveRegistration = new Registration();
 			
-			registration.setRegistrationId(100);
+//			registration.setRegistrationId(100);
 			registration.setUserName("Mary");
 			registration.setPassword("poppins123");
 			registration.setEmail("mary.poppins@gaga.com");
@@ -81,7 +81,7 @@ class RakAssignmentApplicationTests {
 			registration.setPrefCommication("email");
 			registrationRepository.save(registration);
 		
-			registration.setRegistrationId(101);
+//			registration.setRegistrationId(101);
 			registration.setUserName("Ryan");
 			registration.setPassword("paul123");
 			registration.setEmail("ryan.paul@hotmail.com");
@@ -89,7 +89,7 @@ class RakAssignmentApplicationTests {
 			registration.setPrefCommication("email");
 			registrationRepository.save(registration);
 			
-			saveRegistration = registrationRepository.findById(100).orElseThrow(
+			saveRegistration = registrationRepository.findById(1).orElseThrow(
 					() -> new ResourceNotFoundException("Registered User not found by ID :: " + 100));
 			
 		
